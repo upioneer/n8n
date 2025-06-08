@@ -1,85 +1,46 @@
-# Ubuntu Setup for n8n and Ollama (LLaMA3.2)
+# n8n Self-Hosted Setup Guide
 
-This guide walks you through setting up Ubuntu to run [n8n](https://n8n.io/) and [Ollama](https://ollama.com/)
+This repository provides a collection of concise, step-by-step guides to help you install and manage a self-hosted instance of [n8n](https://n8n.io/), including optional integration with [Ollama](https://ollama.com/) and remote access via SSH port forwarding.
 
----
-
-## Prerequisites
-
-Update your system
-
-```bash
-sudo apt-get update
-sudo apt-get upgrade
-```
-
-Install Curl
-```bash
-sudo apt-get install -y curl
-```
-
-Install NPM
-```bash
-sudo apt-get install -y npm
-```
-
-Install NVM and use it to install Node.js v22 (version dependent)
-
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-
-# Load nvm into your shell
-\. "$HOME/.nvm/nvm.sh"
-
-# Install Node.js version 22
-nvm install 22
-```
+Whether you're deploying to a cloud VM or a local server, this repo will walk you through the entire process from installation to automation
 
 ---
 
-## Install Ollama with LLaMA3.2
+## Overview
 
-Ollama lets you run large language models locally with a simple CLI interface.
+All setup instructions are broken into modular guides for clarity and flexibility.
 
-Install Ollama:
+### ➤ [install_n8n.md](install_n8n.md)  
+Covers the prerequisites and installation steps to get `n8n` running on a barebones Linux server using `npm`
 
-```bash
-curl -fsSL https://ollama.com/install.sh | sh
+### ➤ [autoStart.md](autoStart.md)  
+Explains how to configure `n8n` to automatically start at system boot. Ideal for servers that should persist workflows across restarts
+
+### ➤ [install_ollama.md](install_ollama.md)  
+Instructions for installing `Ollama`, a lightweight local LLM runtime that can be integrated into n8n workflows using HTTP requests or custom functions
+
+### ➤ [portForwarding.md](portForwarding.md)  
+A practical guide to securely access your `n8n` web interface from a remote machine using SSH port forwarding. Includes a connection example and troubleshooting tips
+
+---
+
+## Quick Start
+
+1. Start with the [install_n8n.md](install_n8n.md) guide to set up your server and install n8n.
+2. Follow [autoStart.md](autoStart.md) if you want n8n to run automatically after reboot.
+3. (Optional) Use [install_ollama.md](install_ollama.md) to run local AI models alongside your workflows.
+4. If you're using a headless server, refer to [portForwarding.md](portForwarding.md) to access the n8n web UI from your browser.
+
+---
+
+## Repository URL
+
+You can always access the project on GitHub
+
 ```
-
-Download and install the LLaMA3.2 3B model:
-
-```bash
-ollama pull llama3.2:3b
+https://github.com/upioneer/n8n
 ```
 
 ---
 
-## Install and Run n8n
-
-Install `n8n` globally using `npm`:
-
-```bash
-npm install -g n8n
-```
-
-Check if any packages require funding (optional):
-
-```bash
-npm fund
-```
-
-Start `n8n`:
-
-```bash
-n8n start
-```
-
-To stop n8n (if running in the foreground or background), you can use:
-
-```bash
-# Press Ctrl+C if running in the foreground
-# or stop the background process accordingly
-# Or with systemd if you have it set up:
-# sudo systemctl stop n8n.service
-```
+For questions, improvements, or issues, feel free to open a pull request or start a discussion in the repo
