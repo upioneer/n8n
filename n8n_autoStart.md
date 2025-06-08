@@ -1,12 +1,14 @@
-# 🚀 Automate n8n Startup on Ubuntu with a systemd Service
+# Automate n8n Startup on Ubuntu with a systemd Service
 
-This guide provides complete instructions on how to create a `systemd` service on an Ubuntu system. This service will automatically launch the n8n application every time the system boots up, saving you from having to manually start it from the terminal.
+This guide provides complete instructions on how to create a `systemd` service on an Ubuntu system.
+
+This service will automatically launch the n8n application every time the system boots up, saving you from having to manually start it from the terminal.
 
 ---
 
-## 📋 Instructions
+## Instructions
 
-### 🧭 Step 1: Find the Full Path to the n8n Executable
+### Step 1: Find the Full Path to the n8n Executable
 
 First, you need to identify the exact location of the `n8n` binary on your system. This is crucial because the service needs an absolute path to execute the command. Open your terminal and run:
 
@@ -22,7 +24,7 @@ The output will be the full path to the executable. It will look something like:
 
 ---
 
-### 🛠️ Step 2: Create the systemd Service File
+### Step 2: Create the systemd Service File
 
 Use a command-line text editor like `nano` to create the service definition file with administrative permissions:
 
@@ -30,17 +32,17 @@ Use a command-line text editor like `nano` to create the service definition file
 sudo nano /etc/systemd/system/n8n.service
 ```
 
-This command opens an empty file in the nano editor.
+This command opens an empty file in the nano editor
 
 ---
 
-### 🧾 Step 3: Add the Service Configuration
+### Step 3: Add the Service Configuration
 
-Copy and paste the configuration below into the editor.
+Copy and paste the configuration below into the editor
 
-> ⚠️ **IMPORTANT:**  
-> Replace `your_username` with your actual Ubuntu username.  
-> Replace `/path/to/your/n8n` with the full path to the `n8n` binary from Step 1.
+> ⚠️ **IMPORTANT**  
+> Replace `your_username` with your actual Ubuntu username
+> Replace `/path/to/your/n8n` with the full path to the `n8n` binary from Step 1
 
 ```ini
 [Unit]
@@ -59,26 +61,26 @@ RestartSec=5s
 WantedBy=multi-user.target
 ```
 
-Save and exit nano:  
-Press `Ctrl + X`, then `Y`, and `Enter`.
+Save and exit nano
+Press `Ctrl + X`, then `Y`, and `Enter`
 
 ---
 
-### 🔄 Step 4: Enable and Start the New Service
+### Step 4: Enable and Start the New Service
 
-Reload the systemd manager configuration:
+Reload the systemd manager configuration
 
 ```bash
 sudo systemctl daemon-reload
 ```
 
-Enable the service to start on boot:
+Enable the service to start on boot
 
 ```bash
 sudo systemctl enable n8n.service
 ```
 
-Start the service immediately:
+Start the service immediately
 
 ```bash
 sudo systemctl start n8n.service
@@ -86,26 +88,24 @@ sudo systemctl start n8n.service
 
 ---
 
-## 🧑‍💻 Managing the n8n Service
+## Managing the n8n Service
 
-Use the following commands to manage the service:
-
-- **Check the status**:
+**Check the status**
   ```bash
   sudo systemctl status n8n.service
   ```
 
-- **Stop the service**:
+**Stop the service**
   ```bash
   sudo systemctl stop n8n.service
   ```
 
-- **Restart the service**:
+**Restart the service**
   ```bash
   sudo systemctl restart n8n.service
   ```
 
-- **View live logs**:
+**View live logs**
   ```bash
   sudo journalctl -u n8n.service -f
   ```
