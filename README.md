@@ -1,10 +1,10 @@
-# ⚙️ Ubuntu Setup for n8n and Ollama (LLaMA3.2)
+# Ubuntu Setup for n8n and Ollama (LLaMA3.2)
 
 This guide walks you through setting up Ubuntu to run [n8n](https://n8n.io/) and [Ollama](https://ollama.com/)
 
 ---
 
-## 📦 Prerequisites
+## Prerequisites
 
 Update your system
 
@@ -37,7 +37,7 @@ nvm install 22
 
 ---
 
-## 🧠 Install Ollama with LLaMA3.2
+## Install Ollama with LLaMA3.2
 
 Ollama lets you run large language models locally with a simple CLI interface.
 
@@ -55,7 +55,7 @@ ollama pull llama3.2:3b
 
 ---
 
-## 🤖 Install and Run n8n
+## Install and Run n8n
 
 Install `n8n` globally using `npm`:
 
