@@ -40,9 +40,13 @@ This command opens an empty file in the nano editor
 
 Copy and paste the configuration below into the editor
 
-> ⚠️ **IMPORTANT**  
-> Replace `your_username` with your actual Ubuntu username
+> ⚠️ **IMPORTANT**
+> 
+> Replace `username` with your actual Ubuntu username
+> 
 > Replace `/path/to/your/n8n` with the full path to the `n8n` binary from Step 1
+>
+> Take note of your time zone in the Environment tag
 
 ```ini
 [Unit]
@@ -50,12 +54,13 @@ Description=n8n Workflow Automation
 After=network.target
 
 [Service]
-User=your_username
-Group=your_username
+User=username
+Group=username
 Type=simple
 ExecStart=/path/to/your/n8n start
 Restart=on-failure
 RestartSec=5s
+Environment=GENERIC_TIMEZONE=America/Chicago
 
 [Install]
 WantedBy=multi-user.target
