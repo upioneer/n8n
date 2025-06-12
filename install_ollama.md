@@ -28,8 +28,19 @@ Install Ollama:
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-Download and install the LLaMA3.2 3B model:
+Download and install the your models (ex: LLaMA3.2 3B / Deepseek-R1:1.5b)
 
 ```bash
 ollama pull llama3.2:3b
+ollama pull deepseek-r1:1.5b
+```
+
+Engage your model
+
+```bash
+ollama run llama3.2:3b
+```
+
+```bash
+ollama run deepseek-r1:1.5b
 ```
